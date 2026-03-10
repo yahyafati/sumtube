@@ -89,7 +89,7 @@ class Config:
     # Output
     output_dir: str = "outputs"
     save_transcript_json: bool = True
-    save_transcript_txt: bool = True
+    save_transcript_md: bool = True
 
     # Transcript
     transcript_languages: list[str] = dataclasses.field(default_factory=lambda: ["en"])

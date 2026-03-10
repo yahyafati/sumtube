@@ -6,7 +6,7 @@
       <excludeFolder url="file://$MODULE_DIR$/../ClipDigest/outputs" />
       <excludeFolder url="file://$MODULE_DIR$/../ClipDigest/tmp" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.11 (SumTube) (2)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.11 (.venv)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

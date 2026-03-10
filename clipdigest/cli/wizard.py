@@ -157,8 +157,8 @@ def collect_output_config() -> tuple[str, bool, bool]:
 
     output_dir = _ask("Output directory", default="outputs")
     save_json = _confirm("Save raw transcript as JSON?", default=True)
-    save_txt = _confirm("Save plain-text transcript?", default=True)
-    return output_dir, save_json, save_txt
+    save_transcript = _confirm("Save plain-text transcript?", default=True)
+    return output_dir, save_json, save_transcript
 
 
 # ---------------------------------------------------------------------------
@@ -180,7 +180,7 @@ def show_config_summary(config: Config) -> None:
     table.add_row("API Key", "set" if (mc and mc.api_key) else "not set / not needed")
     table.add_row("Output dir", config.output_dir)
     table.add_row("Save JSON", "yes" if config.save_transcript_json else "no")
-    table.add_row("Save TXT", "yes" if config.save_transcript_txt else "no")
+    table.add_row("Transcript", "yes" if config.save_transcript_md else "no")
     table.add_row(
         "Prompt",
         "custom" if config.system_prompt != SYSTEM_PROMPT else "built-in",
@@ -205,24 +205,28 @@ def run_interactive_wizard() -> Config:
         )
     )
 
-    urls = collect_urls()
-    model_cfg = collect_model_config()
-    system_prompt = collect_prompt_config()
-    output_dir, save_json, save_txt = collect_output_config()
+    try:
+        urls = collect_urls()
+        model_cfg = collect_model_config()
+        system_prompt = collect_prompt_config()
+        output_dir, save_json, save_transcript = collect_output_config()
 
-    config = Config(
-        urls=urls,
-        model_config=model_cfg,
-        system_prompt=system_prompt,
-        output_dir=output_dir,
-        save_transcript_json=save_json,
-        save_transcript_txt=save_txt,
-    )
 
-    show_config_summary(config)
+        config = Config(
+            urls=urls,
+            model_config=model_cfg,
+            system_prompt=system_prompt,
+            output_dir=output_dir,
+            save_transcript_json=save_json,
+            save_transcript_md=save_transcript,
+        )
 
-    if not _confirm("Proceed with these settings?", default=True):
-        console.print("[yellow]Aborted.[/yellow]")
+        show_config_summary(config)
+
+        if not _confirm("Proceed with these settings?", default=True):
+            console.print("[yellow]Aborted.[/yellow]")
+            raise SystemExit(0)
+        return config
+    except KeyboardInterrupt:
+        console.print("\n[yellow]Aborted by user.[/yellow]")
         raise SystemExit(0)
-
-    return config

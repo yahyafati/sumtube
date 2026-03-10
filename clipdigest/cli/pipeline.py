@@ -45,8 +45,8 @@ def process_video(url: str, config: Config) -> Path:
 
     transcript_text = transcript_to_text(transcript)
 
-    if config.save_transcript_txt:
-        save_text(transcript_text, output_dir / "transcript.txt")
+    if config.save_transcript_md:
+        save_text(transcript_text, output_dir / "Transcript.md")
         console.print("  [dim]  Saved transcript.txt[/dim]")
 
     # 3. Summarise

@@ -72,7 +72,7 @@ def _build_config_from_args(args) -> "Config":  # noqa: ANN001
         system_prompt=system_prompt,
         output_dir=args.output_dir,
         save_transcript_json=not args.no_transcript_json,
-        save_transcript_txt=not args.no_transcript_txt,
+        save_transcript_md=not args.no_transcript_txt,
     )
 
 
