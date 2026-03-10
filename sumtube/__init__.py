@@ -1,0 +1,4 @@
+"""SumTube - YouTube Video Summarizer"""
+
+__version__ = "0.1.0"
+__author__ = "SumTube"
