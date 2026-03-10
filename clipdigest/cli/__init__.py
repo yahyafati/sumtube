@@ -1,4 +1,4 @@
-"""CLI entry point for SumTube.
+"""CLI entry point for ClipDigest.
 
 Supports two modes:
   1. **Fully interactive** (default / ``--interactive``): a wizard collects all
@@ -29,7 +29,7 @@ def _load_env() -> None:
 # ---------------------------------------------------------------------------
 
 def _build_config_from_args(args) -> "Config":  # noqa: ANN001
-    from sumtube.config import Config, ModelConfig, ENV_KEYS
+    from clipdigest.config import Config, ModelConfig, ENV_KEYS
 
     # Collect URLs
     urls: list[str] = []
@@ -57,7 +57,7 @@ def _build_config_from_args(args) -> "Config":  # noqa: ANN001
     )
 
     # System prompt
-    from sumtube.config import SYSTEM_PROMPT
+    from clipdigest.config import SYSTEM_PROMPT
     system_prompt = SYSTEM_PROMPT
     if args.custom_prompt_file:
         p = Path(args.custom_prompt_file)
@@ -84,8 +84,8 @@ def _build_parser():
     import argparse
 
     parser = argparse.ArgumentParser(
-        prog="sumtube",
-        description="SumTube — YouTube Video Summarizer",
+        prog="clipdigest",
+        description="ClipDigest — YouTube Video Summarizer",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
 
@@ -162,14 +162,14 @@ def main() -> None:
 
     if args.interactive and not (args.url or args.file):
         # Full wizard
-        from sumtube.cli.wizard import run_interactive_wizard
+        from clipdigest.cli.wizard import run_interactive_wizard
         config = run_interactive_wizard()
     else:
-        from sumtube.cli.wizard import show_config_summary
+        from clipdigest.cli.wizard import show_config_summary
         config = _build_config_from_args(args)
         show_config_summary(config)
 
-    from sumtube.cli.pipeline import run
+    from clipdigest.cli.pipeline import run
     run(config)
 
 

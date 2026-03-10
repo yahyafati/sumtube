@@ -7,7 +7,7 @@ from typing import Optional
 from langchain_core.language_models import BaseChatModel
 from langchain_core.prompts import ChatPromptTemplate
 
-from sumtube.config import ModelConfig, SYSTEM_PROMPT
+from clipdigest.config import ModelConfig, SYSTEM_PROMPT
 
 _model_instance: Optional[BaseChatModel] = None
 
@@ -54,7 +54,7 @@ def summarize(
     Args:
         transcript_text: Plain-text transcript to summarise.
         model: Optional explicit model instance; falls back to the cached one.
-        system_prompt: System prompt to use; defaults to :data:`~sumtube.config.SYSTEM_PROMPT`.
+        system_prompt: System prompt to use; defaults to :data:`~clipdigest.config.SYSTEM_PROMPT`.
 
     Returns:
         The model's summary as a plain string.

@@ -1,4 +1,4 @@
-"""Configuration dataclasses and constants for SumTube."""
+"""Configuration dataclasses and constants for ClipDigest."""
 
 from __future__ import annotations
 

@@ -6,11 +6,11 @@ from pathlib import Path
 
 from rich.console import Console
 
-from sumtube.config import Config
-from sumtube.models import get_model, summarize
-from sumtube.output import format_summary, make_output_dir, save_text
-from sumtube.transcript import fetch_transcript, transcript_to_json, transcript_to_text
-from sumtube.transcript.metadata import get_video_metadata
+from clipdigest.config import Config
+from clipdigest.models import get_model, summarize
+from clipdigest.output import format_summary, make_output_dir, save_text
+from clipdigest.transcript import fetch_transcript, transcript_to_json, transcript_to_text
+from clipdigest.transcript.metadata import get_video_metadata
 
 console = Console()
 
@@ -20,7 +20,7 @@ def process_video(url: str, config: Config) -> Path:
 
     Args:
         url: YouTube video URL.
-        config: Resolved :class:`~sumtube.config.Config`.
+        config: Resolved :class:`~clipdigest.config.Config`.
 
     Returns:
         Path to the directory where outputs were saved.
@@ -71,7 +71,7 @@ def process_video(url: str, config: Config) -> Path:
 
 def run(config: Config) -> None:
     """Process all URLs in *config* sequentially."""
-    from sumtube.models import init_model
+    from clipdigest.models import init_model
 
     init_model(config.model_config)
 

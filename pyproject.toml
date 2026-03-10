@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "sumtube"
+name = "clipdigest"
 version = "0.1.0"
 description = "YouTube Video Summarizer powered by LangChain and your choice of LLM"
 readme = "README.md"
@@ -51,16 +51,16 @@ all = [
 ]
 
 [project.scripts]
-sumtube = "sumtube.cli:main"
+clipdigest = "clipdigest.cli:main"
 
 [project.urls]
-Repository = "https://github.com/yahyafati/sumtube"
+Repository = "https://github.com/yahyafati/clipdigest"
 
 # ---------------------------------------------------------------------------
 # Hatch
 # ---------------------------------------------------------------------------
 [tool.hatch.build.targets.wheel]
-packages = ["sumtube"]
+packages = ["clipdigest"]
 
 # ---------------------------------------------------------------------------
 # Ruff (linting & formatting)

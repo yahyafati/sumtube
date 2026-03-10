@@ -1,4 +1,4 @@
-"""Rich-powered interactive prompts for the SumTube CLI."""
+"""Rich-powered interactive prompts for the ClipDigest CLI."""
 
 from __future__ import annotations
 
@@ -12,7 +12,7 @@ from rich.prompt import Confirm, Prompt
 from rich.table import Table
 from rich import box
 
-from sumtube.config import (
+from clipdigest.config import (
     Config,
     ModelConfig,
     SUPPORTED_PROVIDERS,
@@ -199,7 +199,7 @@ def run_interactive_wizard() -> Config:
     """Run the full interactive setup wizard and return a populated :class:`Config`."""
     console.print(
         Panel(
-            "[bold yellow]SumTube[/bold yellow] — YouTube Video Summarizer\n"
+            "[bold yellow]ClipDigest[/bold yellow] — YouTube Video Summarizer\n"
             "[dim]Answer the questions below to configure your summarization run.[/dim]",
             style="yellow",
         )
